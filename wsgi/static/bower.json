@@ -1,0 +1,13 @@
+{
+    "name": "BoneApp",
+    "version": "0.1",
+    "authors": [
+        "Franco N. Bellomo"
+    ],
+    "description": "Bone App js dependencies",
+    "license": "MIT",
+    "dependencies": {
+    	"bootstrap": "latest",
+	"jquery": "latest"
+    }
+}

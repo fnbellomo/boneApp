@@ -1,0 +1,83 @@
+{% extends "layout.html" %}
+{% block content %}
+
+ <div class="container" id="headerwrap">
+   <h1><span class="icon icon-lab"></span></h1>
+   <p>Bone App.</p>		  
+ </div><!-- container -->
+
+
+ <div class="greywrap">
+   <div class="container">
+     <div class="row">
+
+       <h1>The Tools</h1>
+       <div class="col-sm-4 col-md-4">
+	 <span class="icon icon-stack"></span>
+	 <h2>Bootstrap 3</h2>
+	 <p>Shield Theme is powered by Bootstrap 3. The incredible Mobile First Framework is the best option to run your website. </p>
+       </div><!-- col-sm-4 col-md-4 -->
+       <div class="col-sm-4 col-md-4">
+	 <span class="icon icon-hammer"></span>
+	 <h2>Flask and Python</h2>
+	 <p>To work on the server side and will do everything you need with Python! </p>
+       </div><!-- col-sm-4 col-md-4 -->
+       <div class="col-sm-4 col-md-4">
+	 <span class="icon icon-google-plus"></span>
+	 <h2>OAuth 2.0</h2>
+	 <p>An easy way to validate the security sertificados OAuth 2.0 for vincularte with a social network.</p>
+       </div><!-- col-sm-4 col-md-4 -->
+
+     </div><!-- row -->
+   </div><!-- container -->
+ </div><!-- greywrap -->
+
+
+ <div class="container">
+   <div class="row centered">
+     <h1>The Team</h1>
+     
+     <div class="col-xs-6 col-sm-3 col-md-3">
+       <img class="img img-circle" src="../static/img/member1.jpg" height="120px" width="120px" alt="">
+       <br>
+       <h4><b>Jaye</b></h4>
+       <a href="#" class="icon icon-twitter"></a>
+       <a href="#" class="icon icon-facebook"></a>
+       <a href="#" class="icon icon-flickr"></a>
+       <p>Jaye began making websites when animated logos and scrolling text were cool, but has since found a love for simplicity, creating websites that are a pleasure to browse. Monkey Island Fan.</p>
+     </div><!-- col-xs-6 col-sm-3 col-md-3 -->
+
+     <div class="col-xs-6 col-sm-3 col-md-3">
+       <img class="img img-circle" src="../static/img/member2.jpg" height="120px" width="120px" alt="">
+       <br>
+       <h4><b>Michele</b></h4>
+       <a href="#" class="icon icon-twitter"></a>
+       <a href="#" class="icon icon-facebook"></a>
+       <a href="#" class="icon icon-flickr"></a>
+       <p>Be a creative director is a hard task, but Michele loves what she does. Her combination of knowledge and expertise is an important pillar in our agency.</p>
+     </div><!-- col-xs-6 col-sm-3 col-md-3 -->
+
+     <div class="col-xs-6 col-sm-3 col-md-3">
+       <img class="img img-circle" src="../static/img/member3.jpg" height="120px" width="120px" alt="">
+       <br>
+       <h4><b>Tim</b></h4>
+       <a href="#" class="icon icon-twitter"></a>
+       <a href="#" class="icon icon-facebook"></a>
+       <a href="#" class="icon icon-flickr"></a>
+       <p>Tim is an experienced marcoms practitioner and manages projects from inception to delivery. He understands the synergy between great design and commercial effectiveness which shines through on every project.</p>
+     </div><!-- col-xs-6 col-sm-3 col-md-3 -->
+
+     <div class="col-xs-6 col-sm-3 col-md-3">
+       <img class="img img-circle" src="../static/img/member4.jpg" height="120px" width="120px" alt="">
+       <br>
+       <h4><b>Mike</b></h4>
+       <a href="#" class="icon icon-twitter"></a>
+       <a href="#" class="icon icon-facebook"></a>
+       <a href="#" class="icon icon-flickr"></a>
+       <p>Mike combines an expert technical knowledge with a real eye for design. Working with clients from a wide range of industries, he fully understands client objectives when working on a project, large or small..</p>
+     </div><!-- col-xs-6 col-sm-3 col-md-3 -->
+
+   </div><!--row -->
+ </div><!-- container -->
+
+{% endblock %}

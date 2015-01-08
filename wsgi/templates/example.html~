@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="container">
+
+  <div class="row row-offcanvas row-offcanvas-left">
+    
+    <div class="col-sm-3 col-md-2 sidebar-offcanvas" id="sidebar" role="navigation">
+      <ul class="nav nav-sidebar">
+        <li class="active"><a href="#">Overview</a></li>
+        <li><a href="#">Reports</a></li>
+        <li><a href="#">Analytics</a></li>
+        <li><a href="#">Export</a></li>
+      </ul>
+    </div><!--/span-->
+    
+    <div class="col-sm-9 col-dm-10"> 
+      <!--toggle sidebar button-->
+      <p class="visible-xs">
+        <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas"><i class="glyphicon glyphicon-chevron-left"></i></button>
+      </p>
+      
+      <h1 class="page-header">
+        Dashboard
+        <p class="lead">(with off-canvas sidebar)</p>
+      </h1>
+    </div>
+
+  </div>
+</div>
+
+{% endblock %}

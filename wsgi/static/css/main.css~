@@ -1,0 +1,151 @@
+/* Personal CSS */
+
+/* ==========================================================================
+   General styles
+   ========================================================================== */
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    font-family: "Lato";
+    font-weight: 300;
+    font-size: 16px;
+    color: #555;
+
+    -webkit-font-smoothing: antialiased;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Titles */
+h1, h2, h3, h4, h5, h6 {
+    font-family: "Raleway";
+    font-weight: 300;
+    color: #333;
+}
+
+h1{
+	padding-bottom: 30px;
+}
+
+/* Paragraph & Typographic */
+p {
+    line-height: 28px;
+    margin-bottom: 25px;
+}
+
+.centered {
+    text-align: center;
+}
+
+/* Links */
+a {
+    color: #3498db;
+    word-wrap: break-word;
+
+    -webkit-transition: color 0.1s ease-in, background 0.1s ease-in;
+    -moz-transition: color 0.1s ease-in, background 0.1s ease-in;
+    -ms-transition: color 0.1s ease-in, background 0.1s ease-in;
+    -o-transition: color 0.1s ease-in, background 0.1s ease-in;
+    transition: color 0.1s ease-in, background 0.1s ease-in;
+}
+
+a:hover,
+a:focus {
+    color: #c0392b;
+    text-decoration: none;
+    outline: 0;
+}
+
+a:before,
+a:after {
+    -webkit-transition: color 0.1s ease-in, background 0.1s ease-in;
+    -moz-transition: color 0.1s ease-in, background 0.1s ease-in;
+    -ms-transition: color 0.1s ease-in, background 0.1s ease-in;
+    -o-transition: color 0.1s ease-in, background 0.1s ease-in;
+    transition: color 0.1s ease-in, background 0.1s ease-in;
+}
+
+div {
+	display: block;
+}
+
+/* ==========================================================================
+   Layout
+   ========================================================================== */
+
+#footerwrap {
+	background: #2b2b2b;
+	margin-top: 0px;
+	padding-top: 40px;
+	padding-bottom: 20px;
+	border-bottom: 1px solid #ddd;
+	text-align: center;
+}
+
+#footerwrap h4 {
+	color: white;
+}
+
+/* ==========================================================================
+   Home
+   ========================================================================== */
+#headerwrap {
+	background: url(../img/bg1.jpg) no-repeat center top;
+	padding-top:160px;
+	text-align:center;
+	background-attachment: relative;
+	background-position: center center;
+	min-height: 650px;
+	width: 100%;
+
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+#headerwrap h1 {
+	color:#ffffff;
+	margin-top: 90px;
+	padding-bottom: 30px;
+	letter-spacing: 8px;
+	font-size: 100px;
+	font-weight: bold;
+	text-shadow: 2px 2px 2px #000;
+}
+
+#headerwrap p {
+	color:#ffffff;
+	font-size: 40px;
+	font-weight: 400;
+	text-align: center;
+	line-height: 40px;
+	letter-spacing: 3px;
+	margin-left: 15px;
+	text-shadow: 1px 1px 1px #000;
+}
+
+.greywrap {
+	background: #f5f5f5;
+	margin-top: 0px;
+	padding-top: 40px;
+	border-bottom: 1px solid #ddd;
+	text-align: center;
+}
+
+.greywrap p {
+	margin-left: 30px;
+	margin-right: 30px;
+	letter-spacing: 1px;
+	padding-top: 15px;
+	padding-bottom: 15px;
+}
+
+.greywrap .icon {
+	font-size: 60px;
+	line-height: 30px;
+	margin-bottom: 10px;
+}

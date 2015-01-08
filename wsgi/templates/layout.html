@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Bone Flask application">
+    <meta name="author" content="Franco N. Bellomo">
+
+    <title>Bone Flask app</title>
+
+    <!-- Normalize CSS -->
+    <link href="{{ url_for('static', filename='css/normalize.css') }}" rel="stylesheet">
+    <!-- Bootstrap core CSS -->
+    <link href="{{ url_for('static', filename='bower_components/bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet">
+    <!-- Animate CSS -->
+    <link href="{{ url_for('static', filename='css/animate.css') }}" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="{{ url_for('static', filename='css/main.css') }}" rel="stylesheet">
+    <!-- IconMoon CSS -->
+    <link href="{{ url_for('static', filename='css/icomoon.css') }}" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon icon-lab" style="font-size:30px; color:#3498db;"></span>
+          </button>
+          <a class="navbar-brand hidden-xs hidden-sm" href="#home"><span class="icon icon-lab" style="font-size:18px; color:#3498db;"></span></a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="#home" class="smoothScroll">Home</a></li>
+	    <li> <a href="#about" class="smoothScroll"> About</a></li>
+	    <li> <a href="#team" class="smoothScroll"> Team</a></li>
+	    <li> <a href="#example" class="smoothScroll"> Example</a></li>
+	    <li> <a href="#analysis" class="smoothScroll"> Analysis</a></li>
+        </div><!--/.nav-collapse -->
+    </div>
+
+    {% block content %}
+
+    {% endblock %}
+
+    <div id="footerwrap">
+      <div class="container">
+	<h4>Created by <a href="https://twitter.com/fnbellomo">Franco Bellomo</a> - Copyright 2014</h4>
+      </div>
+    </div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="{{ url_for('static', filename='bower_components/jquery/dist/jquery.min.js') }}"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="{{ url_for('static', filename='bower_components/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+    <!-- WOW.js To do the animations -->
+    <script src="{{ url_for('static', filename='js/wow.min.js') }}"></script>
+    <!-- To init the animation -->
+    <script>
+      new WOW().init();
+    </script>
+    <!-- My personal JS -->
+    <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+
+  </body>
+</html>
