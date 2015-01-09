@@ -17,4 +17,8 @@ def home():
 
 @app.route('/example')
 def example():
-  return render_template('example.html')
+  return render_template('example.html', offcanvas='True')
+
+@app.route('/ej')
+def ej():
+  return render_template('ej.html')

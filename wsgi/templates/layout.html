@@ -22,13 +22,22 @@
 
   <body>
 
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <header class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
         <div class="navbar-header">
+          <a class="navbar-brand hidden-xs hidden-sm" href="#home">
+	    <span class="icon icon-lab" style="font-size:18px; color:#3498db;"></span>
+	  </a>
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
             <span class="icon icon-lab" style="font-size:30px; color:#3498db;"></span>
           </button>
-          <a class="navbar-brand hidden-xs hidden-sm" href="#home"><span class="icon icon-lab" style="font-size:18px; color:#3498db;"></span></a>
+	  {% if offcanvas == "True" %}
+	  <button type="button btn-default" class="navbar-toggle" data-toggle="offcanvas" data-target=".sidebar-nav">
+	    <span class="icon icon-menu" style="font-size:30px; color:#3498db;"></span>
+	  </button>
+	  {% endif %}
         </div>
+
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
             <li><a href="#home" class="smoothScroll">Home</a></li>
@@ -37,22 +46,24 @@
 	    <li> <a href="#example" class="smoothScroll"> Example</a></li>
 	    <li> <a href="#analysis" class="smoothScroll"> Analysis</a></li>
         </div><!--/.nav-collapse -->
-    </div>
+      </div><!--/.container -->
+    </header>
 
     {% block content %}
 
     {% endblock %}
 
-    <div id="footerwrap">
+    <!-- Footer -->
+    <footer id="footerwrap">
       <div class="container">
 	<h4>Created by <a href="https://twitter.com/fnbellomo">Franco Bellomo</a> - Copyright 2014</h4>
       </div>
-    </div>
+    </footer>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="{{ url_for('static', filename='bower_components/jquery/dist/jquery.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='bower_components/jquery/dist/jquery.js') }}"></script>
     <!-- Latest compiled and minified JavaScript -->
-    <script src="{{ url_for('static', filename='bower_components/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='bower_components/bootstrap/dist/js/bootstrap.js') }}"></script>
     <!-- WOW.js To do the animations -->
     <script src="{{ url_for('static', filename='js/wow.min.js') }}"></script>
     <!-- To init the animation -->

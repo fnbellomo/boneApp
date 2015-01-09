@@ -19,10 +19,6 @@ body {
     -webkit-overflow-scrolling: touch;
 }
 
-.container{
-    margin-top: 50px;
-}
-
 /* Titles */
 h1, h2, h3, h4, h5, h6 {
     font-family: "Raleway";
@@ -153,3 +149,4 @@ div {
     line-height: 30px;
     margin-bottom: 10px;
 }
+
