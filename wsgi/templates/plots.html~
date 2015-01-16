@@ -1,0 +1,142 @@
+{% extends "layout.html" %}
+{% block content %}
+    
+    <!-- main area -->
+
+      <div id="columns">
+	<div class="row">
+
+	  <div class="col-sm-6">
+	    <div class="box">
+	      <div class="box-head">
+		<h5> 
+		  Plot 1
+		  <small> algo mas </small>
+		</h5>
+		<div class="box-tools">
+		  <a ng-click="isCollapsed = !isCollapsed">
+		    <i class="fa fw" ng-class="{'fa-chevron-up': isCollapsed, 'fa-chevron-down': !isCollapsed}"></i>
+		  </a>
+		</div><!-- box-tools -->
+	      </div><!-- box-head -->
+
+	      <div class="box-content" collapse="isCollapsed">
+		<img src="http://cssdeck.com/uploads/media/items/2/2v3VhAp.png" />
+		<p>
+		  Nullam eget lectus augue. Donec eu sem sit amet ligula 
+		  faucibus suscipit. Suspendisse rutrum turpis quis nunc 
+		  convallis quis aliquam mauris suscipit.
+		  Duis rutrum porta tortor ut convallis.
+		</p>
+	      </div><!-- box-contenet -->
+	    </div><!-- box -->
+	  </div><!-- col -->
+
+	  <div class="col-sm-6">
+	    <div class="box">
+	      <div class="box-head">
+		<h5> 
+		  Plot 2
+		  <small> algo mas </small>
+		</h5>
+		<div class="box-tools">
+		  <a ng-click="isCollapsed2 = !isCollapsed2">
+		    <i class="fa fw" ng-class="{'fa-chevron-up': isCollapsed2, 'fa-chevron-down': !isCollapsed2}"></i>
+		  </a>
+		</div><!-- box-tools -->
+	      </div><!-- box-head -->
+
+	      <div class="box-content" collapse="isCollapsed2">
+		<img src="http://cssdeck.com/uploads/media/items/2/2v3VhAp.png" />
+		<p>
+		  Donec a fermentum nisi. Integer dolor est, commodo ut 
+		  sagittis vitae, egestas at augue. Suspendisse id nulla 
+		  ac urna vestibulum mattis
+		</p>
+	      </div><!-- box-contenet -->
+	    </div><!-- box -->
+	  </div><!-- col -->
+
+	</div><!-- row -->
+	<div class="row">
+
+	  <div class="col-sm-4">
+	    <div class="box">
+	      <div class="box-head">
+		<h5> 
+		  Plot 3
+		  <small> algo mas </small>
+		</h5>
+		<div class="box-tools">
+		  <a ng-click="isCollapsed3 = !isCollapsed3">
+		    <i class="fa fw" ng-class="{'fa-chevron-up': isCollapsed3, 'fa-chevron-down': !isCollapsed3}"></i>
+		  </a>
+		</div><!-- box-tools -->
+	      </div><!-- box-head -->
+
+	      <div class="box-content" collapse="isCollapsed3">
+		<img src="http://cssdeck.com/uploads/media/items/8/8kEc1hS.png" />
+		<p>
+		  Donec a fermentum nisi. Integer dolor est, commodo ut 
+		  sagittis vitae, egestas at augue. Suspendisse id nulla 
+		  ac urna vestibulum mattis
+		</p>
+	      </div><!-- box-contenet -->
+	    </div><!-- box -->
+	  </div><!-- col -->
+
+	  <div class="col-sm-4">
+	    <div class="box">
+	      <div class="box-head">
+		<h5> 
+		  Plot 4
+		  <small> algo mas </small>
+		</h5>
+		<div class="box-tools">
+		  <a ng-click="isCollapsed4 = !isCollapsed4">
+		    <i class="fa fw" ng-class="{'fa-chevron-up': isCollapsed4, 'fa-chevron-down': !isCollapsed4}"></i>
+		  </a>
+		</div><!-- box-tools -->
+	      </div><!-- box-head -->
+
+	      <div class="box-content" collapse="isCollapsed4">
+		<img src="http://cssdeck.com/uploads/media/items/6/6f3nXse.png" />
+		<p>
+		  Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+		  Sed feugiat consectetur pellentesque. Nam ac elit risus, 
+		  ac blandit dui. Duis rutrum porta tortor ut convallis.
+		  Duis rutrum porta tortor ut convallis.
+		</p>
+	      </div><!-- box-contenet -->
+	    </div><!-- box -->
+	  </div><!-- col -->
+
+	  <div class="col-sm-4">
+	    <div class="box">
+	      <div class="box-head">
+		<h5> 
+		  Plot 5
+		  <small> algo mas </small>
+		</h5>
+		<div class="box-tools">
+		  <a ng-click="isCollapsed5 = !isCollapsed5">
+		    <i class="fa fw" ng-class="{'fa-chevron-up': isCollapsed5, 'fa-chevron-down': !isCollapsed5}"></i>
+		  </a>
+		</div><!-- box-tools -->
+	      </div><!-- box-head -->
+
+	      <div class="box-content" collapse="isCollapsed5">
+		<img src="http://cssdeck.com/uploads/media/items/8/8kEc1hS.png" />
+		<p>
+		  Nullam eget lectus augue. Donec eu sem sit amet ligula 
+		  faucibus suscipit. Suspendisse rutrum turpis quis nunc 
+		  convallis quis aliquam mauris suscipit
+		</p>
+	      </div><!-- box-contenet -->
+	    </div><!-- box -->
+	  </div><!-- col -->
+
+	</div><!-- row -->
+      </div><!-- column -->
+
+{% endblock %}

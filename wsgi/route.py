@@ -17,8 +17,13 @@ def home():
 
 @app.route('/example')
 def example():
-  return render_template('example.html', offcanvas='True')
+  return render_template('example.html')
 
-@app.route('/ej')
-def ej():
-  return render_template('ej.html')
+@app.route('/example/plots')
+def plots():
+  return render_template('plots.html')
+
+@app.route('/example/maps')
+def maps():
+  return render_template('maps.html')
+

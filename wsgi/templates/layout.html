@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html ng-app="analisis" lang="en">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,30 +12,33 @@
     <link href="{{ url_for('static', filename='css/normalize.css') }}" rel="stylesheet">
     <!-- Bootstrap core CSS -->
     <link href="{{ url_for('static', filename='bower_components/bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet">
+    <!-- Font Awesome CSS -->
+    <!-- Font Awesome by Dave Gandy - http://fontawesome.io -->
+    <link href="{{ url_for('static', filename='bower_components/font-awesome/css/font-awesome.css') }}" rel="stylesheet">
     <!-- Animate CSS -->
+    <!-- Create by Daniel Eden https://daneden.github.io/animate.css/ -->
     <link href="{{ url_for('static', filename='css/animate.css') }}" rel="stylesheet">
     <!-- Custom styles for this template -->
     <link href="{{ url_for('static', filename='css/main.css') }}" rel="stylesheet">
-    <!-- IconMoon CSS -->
-    <link href="{{ url_for('static', filename='css/icomoon.css') }}" rel="stylesheet">
+
+   <!-- jQuery (necessary for all js libraryes) -->
+    <script src="{{ url_for('static', filename='bower_components/jquery/dist/jquery.js') }}"></script>
   </head>
 
   <body>
 
     <header class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
+      <div class="container-fluid">
         <div class="navbar-header">
           <a class="navbar-brand hidden-xs hidden-sm" href="#home">
-	    <span class="icon icon-lab" style="font-size:18px; color:#3498db;"></span>
+	    <span class="fa fa-rocket" style="font-size:18px; color:#3498db;"></span>
 	  </a>
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="icon icon-lab" style="font-size:30px; color:#3498db;"></span>
+            <span class="fa fa-rocket" style="font-size:30px; color:#3498db;"></span>
           </button>
-	  {% if offcanvas == "True" %}
 	  <button type="button btn-default" class="navbar-toggle" data-toggle="offcanvas" data-target=".sidebar-nav">
-	    <span class="icon icon-menu" style="font-size:30px; color:#3498db;"></span>
+	    <span class="fa fa-th-list" style="font-size:30px; color:#3498db;"></span>
 	  </button>
-	  {% endif %}
         </div>
 
         <div class="navbar-collapse collapse">
@@ -49,9 +52,40 @@
       </div><!--/.container -->
     </header>
 
-    {% block content %}
+    <div class="container-fluid">
+      <div class="row row-offcanvas row-offcanvas-left wrapper-main">
+	
+	<!-- sidebar -->
+	<div class="col-xs-6 col-sm-2 sidebar-offcanvas" id="sidebar" role="navigation">
+	  <ul class="nav">
+            <li><a href="#"><i class="fa fa-home fa-fw"></i> Home</a></li>
+            <li><a href="{{ url_for('plots') }}"><i class="fa fa-line-chart"></i> Plots</a></li>
+            <li><a href="#">Link 2</a></li>
+            <li><a href="#">Link 3</a></li>              
+	  </ul>
+	</div>
+	
+	<!-- main area -->
+	<div class="col-xs-12 col-sm-10 column" ng-controller="CollapseCtrl">
 
-    {% endblock %}
+	  {% block content %}
+
+	  {% endblock %}
+	  
+	</div><!-- /.col-xs-12 main -->
+      </div><!--/.row-->
+    </div><!--/.container-->
+
+    <!-- To make the offcanvas -->
+    <script type="text/javascript">
+      $(document).ready(function() {
+
+        $('[data-toggle=offcanvas]').click(function() {
+          $('.row-offcanvas').toggleClass('active');
+        });
+
+      });      
+    </script>
 
     <!-- Footer -->
     <footer id="footerwrap">
@@ -60,18 +94,28 @@
       </div>
     </footer>
 
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="{{ url_for('static', filename='bower_components/jquery/dist/jquery.js') }}"></script>
-    <!-- Latest compiled and minified JavaScript -->
-    <script src="{{ url_for('static', filename='bower_components/bootstrap/dist/js/bootstrap.js') }}"></script>
+    <!-- Angular.js -->
+    <script src="{{ url_for('static', filename='bower_components/angular/angular.min.js') }}"></script>
+    <!-- Angular UI Bootstrap -->
+    <script src="{{ url_for('static', filename='bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js') }}"></script>
+    <!-- My Angular App -->
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+
+    <!-- Latest compiled and minified Bootstrap.JS -->
+    <script src="{{ url_for('static', filename='bower_components/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='bower_components/bootstrap/js/transition.js') }}"></script>
+    <!-- HighChart -->
+    <script src="{{ url_for('static', filename='bower_components/highcharts-release/highcharts.js') }}"></script>
+    <!-- HighCharts Exporting -->
+    <script src="{{ url_for('static', filename='bower_components/highcharts-release/modules/exporting.js') }}"></script>
+    <!-- HighCharts plots examples -->
+    <script src="{{ url_for('static', filename='js/example_plots.js') }}"></script>
     <!-- WOW.js To do the animations -->
     <script src="{{ url_for('static', filename='js/wow.min.js') }}"></script>
     <!-- To init the animation -->
     <script>
       new WOW().init();
     </script>
-    <!-- My personal JS -->
-    <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
 
   </body>
 </html>

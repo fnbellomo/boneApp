@@ -1,0 +1,127 @@
+{% extends "layout.html" %}
+{% block content %}
+    
+    <!-- main area -->
+
+      <div id="columns">
+	<!------------------------------------------------
+	 Plot 1 and 2 
+	  ----------------------------------------------->
+	<div class="row">
+
+	  <div class="col-sm-6">
+	    <div class="box">
+	      <div class="box-head">
+		<h5> 
+		  Monthly Temperatures
+		  <small> in cities</small>
+		</h5>
+		<div class="box-tools">
+		  <a ng-click="isCollapsed = !isCollapsed">
+		    <i class="fa fw" ng-class="{'fa-chevron-up': isCollapsed, 'fa-chevron-down': !isCollapsed}"></i>
+		  </a>
+		</div><!-- box-tools -->
+	      </div><!-- box-head -->
+
+	      <div class="box-content" collapse="isCollapsed">
+		<div id="plot1"></div>
+	      </div><!-- box-contenet -->
+	    </div><!-- box -->
+	  </div><!-- col -->
+
+	  <div class="col-sm-6">
+	    <div class="box">
+	      <div class="box-head">
+		<h5> 
+		  Average Rainfall
+		  <small> monthly </small>
+		</h5>
+		<div class="box-tools">
+		  <a ng-click="isCollapsed2 = !isCollapsed2">
+		    <i class="fa fw" ng-class="{'fa-chevron-up': isCollapsed2, 'fa-chevron-down': !isCollapsed2}"></i>
+		  </a>
+		</div><!-- box-tools -->
+	      </div><!-- box-head -->
+
+	      <div class="box-content" collapse="isCollapsed2">
+		<div id="plot2"></div>
+	      </div><!-- box-contenet -->
+	    </div><!-- box -->
+	  </div><!-- col -->
+
+	</div><!-- row -->
+
+	<!------------------------------------------------
+	 Plot 3 and 4 
+	  ----------------------------------------------->
+	<div class="row">
+
+	  <div class="col-sm-6">
+	    <div class="box">
+	      <div class="box-head">
+		<h5> 
+		  Combination Chart
+		</h5>
+		<div class="box-tools">
+		  <a ng-click="isCollapsed3 = !isCollapsed3">
+		    <i class="fa fw" ng-class="{'fa-chevron-up': isCollapsed3, 'fa-chevron-down': !isCollapsed3}"></i>
+		  </a>
+		</div><!-- box-tools -->
+	      </div><!-- box-head -->
+
+	      <div class="box-content" collapse="isCollapsed3">
+		<div id="plot3"></div>
+	      </div><!-- box-contenet -->
+	    </div><!-- box -->
+	  </div><!-- col -->
+
+	  <div class="col-sm-6">
+	    <div class="box">
+	      <div class="box-head">
+		<h5> 
+		  Area Plot
+		</h5>
+		<div class="box-tools">
+		  <a ng-click="isCollapsed4 = !isCollapsed4">
+		    <i class="fa fw" ng-class="{'fa-chevron-up': isCollapsed4, 'fa-chevron-down': !isCollapsed4}"></i>
+		  </a>
+		</div><!-- box-tools -->
+	      </div><!-- box-head -->
+
+	      <div class="box-content" collapse="isCollapsed4">
+		<div id="plot4"></div>
+	      </div><!-- box-contenet -->
+	    </div><!-- box -->
+	  </div><!-- col -->
+
+	</div><!-- row -->
+
+	<!------------------------------------------------
+	 Plot 5
+	  ----------------------------------------------->
+	<div class="row">
+
+	  <div class="col-sm-12">
+	    <div class="box">
+	      <div class="box-head">
+		<h5> 
+		  Live sensor
+		  <small> measuring every 1 second</small>
+		</h5>
+		<div class="box-tools">
+		  <a ng-click="isCollapsed5 = !isCollapsed5">
+		    <i class="fa fw" ng-class="{'fa-chevron-up': isCollapsed5, 'fa-chevron-down': !isCollapsed5}"></i>
+		  </a>
+		</div><!-- box-tools -->
+	      </div><!-- box-head -->
+
+	      <div class="box-content" collapse="isCollapsed5">
+		<div id="plot5"></div>
+	      </div><!-- box-contenet -->
+	    </div><!-- box -->
+	  </div><!-- col -->
+
+	</div><!-- row -->
+      </div><!-- column -->
+
+{% endblock %}
