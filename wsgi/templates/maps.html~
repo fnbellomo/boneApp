@@ -124,11 +124,4 @@
 	</div><!-- row -->
       </div><!-- column -->
 
-    <!-- HighChart -->
-    <script src="{{ url_for('static', filename='bower_components/highcharts-release/highcharts.js') }}"></script>
-    <!-- HighCharts Exporting -->
-    <script src="{{ url_for('static', filename='bower_components/highcharts-release/modules/exporting.js') }}"></script>
-    <!-- HighCharts plots examples -->
-    <script src="{{ url_for('static', filename='js/example_plots.js') }}"></script>
-
 {% endblock %}

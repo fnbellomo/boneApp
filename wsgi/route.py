@@ -27,3 +27,6 @@ def plots():
 def maps():
   return render_template('maps.html')
 
+@app.route('/example/google')
+def google():
+  return render_template('google.html')

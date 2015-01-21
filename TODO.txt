@@ -1,4 +1,5 @@
-#Hace iInstall para los requerimientos de python
-#Instalar boostrap, wow via bower o npm en mi maquina
-wow.js = https://github.com/matthieua/WOW
+#Hace Install para los requerimientos de python
+
 #Hacer documentación
+
+#Limpiar mi css

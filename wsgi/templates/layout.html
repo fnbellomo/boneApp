@@ -56,12 +56,24 @@
       <div class="row row-offcanvas row-offcanvas-left wrapper-main">
 	
 	<!-- sidebar -->
-	<div class="col-xs-6 col-sm-2 sidebar-offcanvas" id="sidebar" role="navigation">
+	<div class="col-xs-6 col-sm-2 sidebar-offcanvas" id="sidebar" role="navigation"  ng-controller="OffNavCollapseCtrl">
 	  <ul class="nav">
             <li><a href="#"><i class="fa fa-home fa-fw"></i> Home</a></li>
+	    <li>
+	      <a ng-click="isNavCollapsed = !isNavCollapsed">
+		<i class="fa fa-bar-chart-o"></i>
+		<span class="nav-label">Graphs</span>
+		<i class="fa-right fa fw" ng-class="{'fa-chevron-up': !isNavCollapsed, 'fa-chevron-down': isNavCollapsed}"></i>
+	      </a>
+	      <ul class="nav nav-second-level" collapse="isNavCollapsed">
+		<li><a href="{{ url_for('plots') }}">Analysis</a></li>
+		<li><a href="{{ url_for('maps') }}">Maps</a></li>
+	      </ul>
+	    </li>
             <li><a href="{{ url_for('plots') }}"><i class="fa fa-line-chart"></i> Plots</a></li>
+	    <li><a href="{{ url_for('google') }}"><i class="fa fa-line-chart"></i> Google</a></li>
             <li><a href="#">Link 2</a></li>
-            <li><a href="#">Link 3</a></li>              
+            <li><a href="#">Link 3</a></li>
 	  </ul>
 	</div>
 	
@@ -104,12 +116,7 @@
     <!-- Latest compiled and minified Bootstrap.JS -->
     <script src="{{ url_for('static', filename='bower_components/bootstrap/dist/js/bootstrap.min.js') }}"></script>
     <script src="{{ url_for('static', filename='bower_components/bootstrap/js/transition.js') }}"></script>
-    <!-- HighChart -->
-    <script src="{{ url_for('static', filename='bower_components/highcharts-release/highcharts.js') }}"></script>
-    <!-- HighCharts Exporting -->
-    <script src="{{ url_for('static', filename='bower_components/highcharts-release/modules/exporting.js') }}"></script>
-    <!-- HighCharts plots examples -->
-    <script src="{{ url_for('static', filename='js/example_plots.js') }}"></script>
+   
     <!-- WOW.js To do the animations -->
     <script src="{{ url_for('static', filename='js/wow.min.js') }}"></script>
     <!-- To init the animation -->

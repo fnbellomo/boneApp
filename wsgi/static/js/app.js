@@ -16,4 +16,12 @@
 	$scope.isCollapsed5 = false;
     });
 
+    app.controller('OffNavCollapseCtrl', function ($scope) {
+	$scope.isNavCollapsed = true;
+	$scope.isNavCollapsed2 = true;
+	$scope.isNavCollapsed3 = true;
+	$scope.isNavCollapsed4 = true;
+	$scope.isNavCollapsed5 = true;
+    });
+
 })();
