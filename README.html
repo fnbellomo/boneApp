@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<title>README.html</title>
+
+</head>
+
+<body>
+
+<h1 id="bone-app">Bone App</h1>
+<h2 id="howto-install-bower-and-the-js-libraries-in-debian">HowTo install Bower and the JS libraries (in Debian)</h2>
+<ol style="list-style-type: decimal">
+<li><p>First, we need install <a href="https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager">Node.JS</a>. Like sudo, we do:</p>
+<pre><code># apt-get install curl
+# curl -sL https://deb.nodesource.com/setup | bash -
+# apt-get install -y nodejs</code></pre></li>
+<li><p>Now, install <a href="http://bower.io/">Bower</a>:</p>
+<pre><code>$ sudo npm install -g bower</code></pre></li>
+</ol>
+<h2 id="install-python-dependence">Install Python dependence</h2>
+<pre><code>$ HACER EL requerimets.txt
+$ pip install requerimets.txt</code></pre>
+<h2 id="enable-the-drive-api">Enable the Drive API</h2>
+<p>Usar como guia para escribir este link: https://developers.google.com/drive/web/quickstart/quickstart-python</p>
+<ol style="list-style-type: decimal">
+<li>Go to the <a href="https://console.developers.google.com/">Google Developers Console</a>.</li>
+<li>Select a project, or create a new one.</li>
+<li>In the sidebar on the left, expand <strong>APIs &amp; auth</strong>. Next, click <strong>APIs</strong>. In the list of APIs, make sure the status is <strong>ON</strong> for the Drive API.</li>
+<li>In the sidebar on the left, select <strong>Credentials</strong>.
+<ol style="list-style-type: decimal">
+<li>In either case, you end up on the <strong>Credentials</strong> page and can create your project's credentials from here.</li>
+<li>If you haven't done so already, create your OAuth 2.0 credentials by clicking <strong>Create new Client ID</strong> under the <strong>OAuth</strong> heading. Next, look for your application's client ID and client secret in the relevant table. You may also create and edit redirect URIs from this page.</li>
+</ol></li>
+<li>In <code>wsgi/route.py</code> remplace <strong><code>YOUR_CLIENT_ID</code></strong> with the Client ID you generated in the &quot;Enable the Drive API&quot; step. Replace YOUR_CLIENT_SECRET with your Client Secret, also generated previously.</li>
+</ol>
+
+</body>
+</html>

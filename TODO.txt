@@ -1,5 +1,7 @@
-#Hace Install para los requerimientos de python
+#Hacer Install.txt para los requerimientos de python
 
 #Hacer documentación
 
 #Limpiar mi css
+
+#Pasar los datos de google que estan en /wsgi/route.py (CLIEN_ID, CLIENT_SECRET, etc) a un archivo client_secrets.json https://developers.google.com/drive/web/auth/web-server
