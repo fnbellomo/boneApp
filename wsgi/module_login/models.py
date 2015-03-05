@@ -11,7 +11,7 @@ class DatosUsuarios():
     self.list_permisos = []
 
     for line in archivo.readlines():
-      (usuario, password, root) = line.split(",")
+      (usuario, password, root, email) = line.split(",")
       self.list_usuarios.append(usuario)
       self.list_password.append(password)
       self.list_permisos.append(root)

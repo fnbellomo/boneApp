@@ -28,15 +28,15 @@ import pytz
 def home():
   return render_template('index.html')
 
-@app.route('/example')
+@app.route('/example/')
 def example():
   return render_template('example.html')
 
-@app.route('/example/plots')
+@app.route('/example/plots/')
 def plots():
   return render_template('plots.html')
 
-@app.route('/example/maps')
+@app.route('/example/maps/')
 def maps():
   return render_template('maps.html')
 
@@ -162,10 +162,13 @@ def oauth2callback():
 def usersExample():
   if "username" not in session:
     return redirect(url_for('login'))
+  
+  permission = []
+  permission.append(session["permission"])
 
-  return(session["username"])
+  return render_template("user_plots.html", permission = permission)
 
-@app.route('/login', methods=("GET", "POST"))
+@app.route('/login/', methods=("GET", "POST"))
 def login():
   form = MyForm()
 
@@ -182,6 +185,7 @@ def login():
         
       num_usuario = usuarios.index(form.username.data)
       session["permission"] = permission[num_usuario]
+      print session["permission"]
 
       return redirect(url_for("usersExample"))
 
@@ -194,7 +198,7 @@ def login():
   elif request.method == "GET":
     return render_template("login.html", form=form)
 
-@app.route("/logout")
+@app.route('/logout/')
 def logout():
 
   if "username" not in session:
