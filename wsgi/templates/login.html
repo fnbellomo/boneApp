@@ -1,0 +1,81 @@
+{% extends "layout.html" %}
+
+{% block content %}
+  
+  <h2>Login</h2>
+
+  <p> La idea es mostrar un básico control de usuarios. En este caso, cada usuario tiene un nivel de acceso a la aplicación distinto. Cada nivel de acceso, nos va a permitir ver distintos plot. Entonces, supongamos que tenemos 3 nivel. Dos son de personas que pertenecen a distintos experimentos, y tenemos un tercer nivel que es el director del equipo y puede ver todo.</p>
+
+  <table class="table table-striped">
+      <thead>
+	  <tr>
+	      <th> # </th>
+	      <th> Username </th>
+	      <th> Password </th>
+	      <th> Access </th>
+	  </tr>
+      </thead>
+      <tbody>
+	  <tr>
+	      <th scope"row"> 1 </th>
+	      <td> user1 </td>
+	      <td> user1 </td>
+	      <td> 1 </td>
+	  </tr>
+	  <tr>
+	      <th scope"row"> 2 </th>
+	      <td> user2 </td>
+	      <td> user2 </td>
+	      <td> 2 </td>
+	  </tr>
+	  <tr>
+	      <th scope"row"> 1 </th>
+	      <td> admin </td>
+	      <td> x </td>
+	      <td> root </td>
+	  </tr>
+      </tbody>
+  </table>
+
+<div class="box">
+
+    {% for message in get_flashed_messages() %}
+       <div class="flash">{{ message }}</div>
+    {% endfor %}
+
+  <form class="form-horizontal" method="POST" style="margin-top: 10px;" action="{{ url_for('login') }}">
+  
+    {{ form.hidden_tag() }}
+
+    <div class="form-group">
+      <label for="inputUser" class="col-sm-2 control-label">Username</label>
+      <div class="col-sm-10">
+        <input type="username" class="form-control" id="inputUser" placeholder="Username" {{ form.username(size=20) }}
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="inputPassword" class="col-sm-2 control-label">Password</label>
+      <div class="col-sm-10">
+        <input type="password" class="form-control" id="inputPassword" placeholder="Password" {{ form.password }}
+      </div>
+    </div>    
+    
+    <div class="form-group">
+	<div class="col-sm-offset-2 col-sm-10">
+	    <div class="checkbox">
+		<label>
+		    {{form.remember_me }} Remember me
+		</label>
+	    </div>
+	</div>
+    </div>
+    <div class="form-group">
+	<div class="col-sm-offset-2 col-sm-10">
+	    <button type="submit" class="btn btn-default">Sign in</button>
+	</div>
+    </div> 
+    
+  </form>
+
+</div>
+{% endblock %}

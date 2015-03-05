@@ -48,6 +48,9 @@
 	    <li> <a href="#team" class="smoothScroll"> Team</a></li>
 	    <li> <a href="#example" class="smoothScroll"> Example</a></li>
 	    <li> <a href="#analysis" class="smoothScroll"> Analysis</a></li>
+	    {% if "username" in session %}
+	      <li> <a href="logout" class="smoothScroll"> Logout</a></li>
+	    {% endif %}
         </div><!--/.nav-collapse -->
       </div><!--/.container -->
     </header>
@@ -70,8 +73,19 @@
 		<li><a href="{{ url_for('maps') }}">Maps</a></li>
 	      </ul>
 	    </li>
-	    <li><a href="{{ url_for('google') }}"><i class="fa fa-google-plus-square"></i> Google</a></li>
-            <li><a href="#">Link 2</a></li>
+	    <li>
+	      <a ng-click="isNavCollapsed2 = !isNavCollapsed2">
+		<i class="fa fa-google-plus-square"></i>
+		<span class="nav-label">Google</span>
+		<i class="fa-right fa fw" ng-class="{'fa-chevron-up': !isNavCollapsed2, 'fa-chevron-down': isNavCollapsed2}"></i>
+	      </a>
+	      <ul class="nav nav-second-level" collapse="isNavCollapsed2">
+		<li><a href="{{ url_for('google') }}">My Drive</a></li>
+		<li><a href="{{ url_for('google', directory_id = 'shared') }}">Shared</a></li>
+
+	      </ul>
+	    </li>
+            <li><a href="{{ url_for('usersExample') }}"><i class="fa fa-users"></i> Users</a></li>
             <li><a href="#">Link 3</a></li>
 	  </ul>
 	</div>

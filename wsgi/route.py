@@ -1,15 +1,15 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
-from pyrfc3339 import generate, parse
-from datetime import datetime
-import pytz
-
 from wsgi import app
 import json
 
 # Flask imports
-from flask import render_template, session, request, redirect, url_for
+from flask import render_template, session, request, redirect, url_for, flash
+
+# Users data for login
+from module_login.forms import MyForm
+from module_login.models import DatosUsuarios
 
 # To use Google APIs Client Library
 from apiclient.discovery import build
@@ -18,6 +18,10 @@ from oauth2client import client
 from oauth2client.client import OAuth2WebServerFlow
 import httplib2
 
+# To work with time of google drive file (last modifications, ....)
+from pyrfc3339 import generate, parse
+from datetime import datetime
+import pytz
 
 
 @app.route('/')
@@ -36,8 +40,9 @@ def plots():
 def maps():
   return render_template('maps.html')
 
-@app.route('/example/google')
-def google():
+@app.route('/example/google/')
+@app.route('/example/google/<directory_id>')
+def google(directory_id = None):
 
   # First check the credentials.
   # If no credentials are found or the credentials are invalid due to
@@ -63,25 +68,77 @@ def google():
     #   authorized httplib2.Http() object that can be used for API calls
     drive_service = build('drive', 'v2', http_auth)
 
-    files = drive_service.files().list().execute()
+    # By default, files().list() returns all files. This includes files with 
+    # trashed=true. The query parameter q is to filter trashed=false.
+    # For more filter parameter read
+    # https://developers.google.com/drive/web/search-parameters
+    param = {}
+    param['q'] = 'trashed=false'
+    param['maxResults'] = 1000
+    files = drive_service.files().list(**param).execute()
     #files_json = json.dumps(files, sort_keys=True, indent=4)
 
     result = []
-    file_name = []
-    file_type = []
-    file_owner = []
-    file_modifiedDate = []
-    file_modifiedUser = []
     result.extend(files['items'])
-    for item in files['items']:
-      file_name.append(item['title'].encode('utf-8', 'ignore'))
-      file_type.append(item['mimeType'].encode('utf-8', 'ignore'))
-      file_modifiedDate.append(parse(item['modifiedDate']))
-      file_modifiedUser.append(item['lastModifyingUserName'].encode('utf-8', 'ignore'))
 
-    drive_data = [list(i) for i in zip(file_name, file_type, file_modifiedDate, file_modifiedUser)]
+    # I don't know why, but some file have a empy ['parents'] parameter.
+    # I don't display it's.
+    b = []
+    for i in range(len(result)):
+      a = result[i]['parents']
+      if len(a) == 0:
+        b.append(i)
+    for i in range(len(b)):
+      result.pop(b[i] - i)    
 
-    return render_template('google.html', names=drive_data)
+    if directory_id == None:
+      
+      f = open('salida3', 'a')
+      for i in range(len(result)):
+        if 'headRevisionId' in result[i].keys():
+          f.write('%-60s %30s %30s \n' %(result[i]['title'].encode('utf-8'), result[i]['id'].encode('utf-8'), result[i]['headRevisionId'].encode('utf-8')))
+        else:
+          f.write('%-60s %30s \n' %(result[i]['title'].encode('utf-8'), result[i]['id'].encode('utf-8')))
+      f.close()
+
+      select_file = []
+      for i in range(len(result)):
+        if result[i]['parents'][0]['isRoot'] == True:
+          select_file.append(result[i])
+
+      return render_template('google.html', all_files=select_file)
+
+    
+    elif directory_id == 'shared':
+
+      to_show = []
+      for i in range(len(result)):
+        c = 0
+        for j in range(len(result)):
+          if result[i]['parents'][0]['id'] == result[j]['id']:
+            c = c + 1
+        if c == 0:
+          to_show.append(result[i])
+      for i in range(len(to_show)):
+        if to_show[i]['shared'] == True:
+          print to_show[i]['title']
+
+      select_file = []
+      for i in range(len(result)):
+        if result[i]['shared'] == True:
+          select_file.append(result[i])
+
+      return render_template('google.html', all_files=select_file)
+
+
+    else:
+      select_file = []
+      for i in range(len(result)):
+        if result[i]['parents'][0]['id'] == directory_id:
+          select_file.append(result[i])
+
+      return render_template('google.html', all_files=select_file)
+
 
 @app.route('/oauth2callback')
 def oauth2callback():
@@ -100,3 +157,49 @@ def oauth2callback():
     credentials = flow.step2_exchange(auth_code)
     session['credentials'] = credentials.to_json()
     return redirect(url_for('google'))
+
+@app.route('/example/users/')
+def usersExample():
+  if "username" not in session:
+    return redirect(url_for('login'))
+
+  return(session["username"])
+
+@app.route('/login', methods=("GET", "POST"))
+def login():
+  form = MyForm()
+
+  datos = DatosUsuarios()
+  usuarios = datos.usuarios()
+  permission = datos.permisos()
+
+  if "username" in session:
+    return redirect(url_for('usersExample'))
+
+  if request.method == "POST":
+    if form.validate() == True:
+      session["username"] = form.username.data
+        
+      num_usuario = usuarios.index(form.username.data)
+      session["permission"] = permission[num_usuario]
+
+      return redirect(url_for("usersExample"))
+
+    if form.validate() == False:
+      # If method is POST and form failed to validate
+      # Do something (flash message?)
+      flash('All fields are required.')
+      return render_template("login.html", form=form)
+
+  elif request.method == "GET":
+    return render_template("login.html", form=form)
+
+@app.route("/logout")
+def logout():
+
+  if "username" not in session:
+    return redirect(url_for('login'))
+    
+  session.pop("username", None)
+  session.pop("permiso", None)
+  return redirect(url_for('home'))

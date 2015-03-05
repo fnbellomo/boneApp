@@ -5,7 +5,7 @@
   <div id="columns">
 
     <div class="row">
-      <div class="col-sm-10 col-sm-offset-1">
+      <div class="col-sm-12">
 	<div class="box">
 
 	    <table class="table table-striped">
@@ -16,48 +16,74 @@
 		</tr>
 	      </thead>
 	      <tbody>
-		{% for name in names %}
-		<tr>
-		  {% if name[1] == 'application/vnd.google-apps.folder' %}
-		  <td> <i class="fa fa-folder fa-1g icon-blue"></i>
-		    {% elif name[1] == 'text/plain' %}
-		  <td> <i class="fa fa-file-code-o icon-blue"></i>
-		    {% elif name[1] == 'text/html' %}
-		  <td> <i class="fa fa-file-code-o icon-blue"></i>
-		    {% elif name[1] == 'application/vnd.ms-excel' %}
-		  <td> <i class="fa fa-file-excel-o icon-blue"></i>
-		    {% elif name[1] == 'application/vnd.google-apps.spreadsheet' %}
-		  <td> <i class="fa fa-file-excel-o icon-blue"></i>
-		    {% elif name[1] == 'application/vnd.google-apps.document' %}
-		  <td> <i class="fa fa-file-text-o icon-blue"></i>
-		    {% elif name[1] == 'application/pdf' %}
-		  <td> <i class="fa fa-file-pdf-o icon-blue"></i>
-		    {% elif name[1] == 'application/octet-stream' %}
-		  <td> <i class="fa fa-file-sound-o icon-blue"></i>
-		    {% elif name[1] == 'application/vnd.openxmlformats-officedocument.wordprocessingml.document' %}
-		  <td> <i class="fa fa-file-word-o icon-blue"></i>
-		    {% elif name[1] == 'application/msword' %}
-		  <td> <i class="fa fa-file-word-o icon-blue"></i>
-		    {% elif name[1] == 'image/jpeg' %}
-		  <td> <i class="fa fa-file-picture-o icon-blue"></i>
-		    {% else %}
-		  <td> <i class="fa fa-file-text-o icon-blue"></i>
-		    {% endif %}
-		    {{ name[0].decode('utf-8') }}</td>
-		  <td>{{ name[2].strftime('%d/%m/%Y') }} 
-		    <span class="last-modified">
-		      by {{ name[3].decode('utf-8') }}
-		    </span>
-		  </td>
-		</tr>
+		{% for file in all_files %}
+
+		    <tr>
+		      <div>
+		      {% if file['mimeType'] == 'application/vnd.google-apps.folder' %}
+		        <td> 
+			  <a href="{{ url_for('google', directory_id = file['id']) }}">
+			    <i class="fa fa-folder fa-1g icon-blue"></i>
+			    <div class="in-line drive-style"> {{ file['title'] }} </div>
+			    {% if file['shared'] == True %}
+			      <div class="in-line doclist-share">
+			        Shared
+			      </div>
+			    {% endif %}
+			  </a>
+			</td>
+			{% elif file['mimeType'] == 'text/plain' %}
+			  <td> <i class="fa fa-file-code-o icon-blue"></i>
+			{% elif file['mimeType'] == 'text/html' %}
+			  <td> <i class="fa fa-file-code-o icon-blue"></i>
+		        {% elif file['mimeType'] == 'application/vnd.ms-excel' %}
+		          <td> <i class="fa fa-file-excel-o icon-blue"></i>
+			{% elif file['mimeType'] == 'application/vnd.google-apps.spreadsheet' %}
+		          <td> <i class="fa fa-file-excel-o icon-blue"></i>
+		        {% elif file['mimeType'] == 'application/vnd.google-apps.document' %}
+		          <td> <i class="fa fa-file-text-o icon-blue"></i>
+		        {% elif file['mimeType'] == 'application/pdf' %}
+		          <td> <i class="fa fa-file-pdf-o icon-blue"></i>
+		        {% elif file['mimeType'] == 'application/octet-stream' %}
+		          <td> <i class="fa fa-file-sound-o icon-blue"></i>
+		        {% elif file['mimeType'] == 'application/vnd.openxmlformats-officedocument.wordprocessingml.document' %}
+		          <td> <i class="fa fa-file-word-o icon-blue"></i>
+		        {% elif file['mimeType'] == 'application/msword' %}
+		          <td> <i class="fa fa-file-word-o icon-blue"></i>
+		        {% elif file['mimeType'] == 'image/jpeg' %}
+		          <td> <i class="fa fa-file-picture-o icon-blue"></i>
+		        {% else %}
+		          <td> <i class="fa fa-file-text-o icon-blue"></i>
+		      {% endif %}
+
+		      {% if file['mimeType'] != 'application/vnd.google-apps.folder' %}
+		              <div class="in-line drive-style"> {{ file['title'] }} </div>
+			      {% if file['shared'] == True %}
+			        <div class="in-line doclist-share">
+			          Shared
+			        </div>
+			      {% endif %}
+			 </td>
+                      {% endif %}
+		      </div>
+
+		      <td>
+			 <div class="drive-style"> 
+			   {{ file['modifiedDate'] }} 
+		           <span class="doclist-share">
+		             by {{ file['lastModifyingUserName'] }}
+		           </span>
+			 </div>
+		      </td>
+		    </tr>
 		{% endfor %}
 	      </tbody>
 	    </table>
 
-	</div><!-- box -->
-      </div><!-- col-sm-6 -->
-    </div><!-- row -->
+	  </div><!-- box -->
+        </div><!-- col-sm-6 -->
+      </div><!-- row -->
 
-  </div><!-- columns -->
+    </div><!-- columns -->
 
 {% endblock %}
