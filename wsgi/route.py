@@ -168,6 +168,11 @@ def usersExample():
 
   return render_template("user_plots.html", permission = permission)
 
+@app.route('/example/analysis')
+def analysis():
+
+  return("working in this")
+
 @app.route('/login/', methods=("GET", "POST"))
 def login():
   form = MyForm()
