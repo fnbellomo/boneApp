@@ -43,13 +43,10 @@
 
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li><a href="#home" class="smoothScroll">Home</a></li>
-	    <li> <a href="#about" class="smoothScroll"> About</a></li>
-	    <li> <a href="#team" class="smoothScroll"> Team</a></li>
-	    <li> <a href="#example" class="smoothScroll"> Example</a></li>
-	    <li> <a href="#analysis" class="smoothScroll"> Analysis</a></li>
+            <li><a href="{{ url_for('home') }}" class="smoothScroll">Home</a></li>
+	    <li> <a href="{{ url_for('example') }}" class="smoothScroll">Example</a></li>
 	    {% if "username" in session %}
-	      <li> <a href="logout" class="smoothScroll"> Logout</a></li>
+	      <li> <a href="{{ url_for('logout') }}" class="smoothScroll">Logout</a></li>
 	    {% endif %}
         </div><!--/.nav-collapse -->
       </div><!--/.container -->
