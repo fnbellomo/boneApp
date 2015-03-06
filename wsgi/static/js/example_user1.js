@@ -5,52 +5,122 @@
 /***************************************************************
 *	Plot 1: Simple line
 ***************************************************************/
-
 $(function () {
     $('#plot1').highcharts({
+        chart: {
+            type: 'spline'
+        },
         title: {
-            text: 'Monthly Average Temperature',
-            x: -20 //center
+            text: 'Snow depth'
         },
         subtitle: {
-            text: 'Source: WorldClimate.com',
-            x: -20
+            text: 'Irregular time data'
         },
         xAxis: {
-            categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
-                'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+            type: 'datetime',
+            dateTimeLabelFormats: { // don't display the dummy year
+                month: '%e. %b',
+                year: '%b'
+            },
+            title: {
+                text: 'Date'
+            }
         },
         yAxis: {
             title: {
-                text: 'Temperature (°C)'
+                text: 'Snow depth (m)'
             },
-            plotLines: [{
-                value: 0,
-                width: 1,
-                color: '#808080'
-            }]
+            min: 0
         },
         tooltip: {
-            valueSuffix: '°C'
+            headerFormat: '<b>{series.name}</b><br>',
+            pointFormat: '{point.x:%e. %b}: {point.y:.2f} m'
         },
-        legend: {
-            layout: 'vertical',
-            align: 'right',
-            verticalAlign: 'middle',
-            borderWidth: 0
+
+        plotOptions: {
+            spline: {
+                marker: {
+                    enabled: true
+                }
+            }
         },
+
         series: [{
-            name: 'Tokyo',
-            data: [7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6]
+            name: 'Winter 2007-2008',
+            // Define the data points. All series have a dummy year
+            // of 1970/71 in order to be compared on the same x axis. Note
+            // that in JavaScript, months start at 0 for January, 1 for February etc.
+            data: [
+                [Date.UTC(1970,  9, 27), 0   ],
+                [Date.UTC(1970, 10, 10), 0.6 ],
+                [Date.UTC(1970, 10, 18), 0.7 ],
+                [Date.UTC(1970, 11,  2), 0.8 ],
+                [Date.UTC(1970, 11,  9), 0.6 ],
+                [Date.UTC(1970, 11, 16), 0.6 ],
+                [Date.UTC(1970, 11, 28), 0.67],
+                [Date.UTC(1971,  0,  1), 0.81],
+                [Date.UTC(1971,  0,  8), 0.78],
+                [Date.UTC(1971,  0, 12), 0.98],
+                [Date.UTC(1971,  0, 27), 1.84],
+                [Date.UTC(1971,  1, 10), 1.80],
+                [Date.UTC(1971,  1, 18), 1.80],
+                [Date.UTC(1971,  1, 24), 1.92],
+                [Date.UTC(1971,  2,  4), 2.49],
+                [Date.UTC(1971,  2, 11), 2.79],
+                [Date.UTC(1971,  2, 15), 2.73],
+                [Date.UTC(1971,  2, 25), 2.61],
+                [Date.UTC(1971,  3,  2), 2.76],
+                [Date.UTC(1971,  3,  6), 2.82],
+                [Date.UTC(1971,  3, 13), 2.8 ],
+                [Date.UTC(1971,  4,  3), 2.1 ],
+                [Date.UTC(1971,  4, 26), 1.1 ],
+                [Date.UTC(1971,  5,  9), 0.25],
+                [Date.UTC(1971,  5, 12), 0   ]
+            ]
         }, {
-            name: 'New York',
-            data: [-0.2, 0.8, 5.7, 11.3, 17.0, 22.0, 24.8, 24.1, 20.1, 14.1, 8.6, 2.5]
+            name: 'Winter 2008-2009',
+            data: [
+                [Date.UTC(1970,  9, 18), 0   ],
+                [Date.UTC(1970,  9, 26), 0.2 ],
+                [Date.UTC(1970, 11,  1), 0.47],
+                [Date.UTC(1970, 11, 11), 0.55],
+                [Date.UTC(1970, 11, 25), 1.38],
+                [Date.UTC(1971,  0,  8), 1.38],
+                [Date.UTC(1971,  0, 15), 1.38],
+                [Date.UTC(1971,  1,  1), 1.38],
+                [Date.UTC(1971,  1,  8), 1.48],
+                [Date.UTC(1971,  1, 21), 1.5 ],
+                [Date.UTC(1971,  2, 12), 1.89],
+                [Date.UTC(1971,  2, 25), 2.0 ],
+                [Date.UTC(1971,  3,  4), 1.94],
+                [Date.UTC(1971,  3,  9), 1.91],
+                [Date.UTC(1971,  3, 13), 1.75],
+                [Date.UTC(1971,  3, 19), 1.6 ],
+                [Date.UTC(1971,  4, 25), 0.6 ],
+                [Date.UTC(1971,  4, 31), 0.35],
+                [Date.UTC(1971,  5,  7), 0   ]
+            ]
         }, {
-            name: 'Berlin',
-            data: [-0.9, 0.6, 3.5, 8.4, 13.5, 17.0, 18.6, 17.9, 14.3, 9.0, 3.9, 1.0]
-        }, {
-            name: 'London',
-            data: [3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8]
+            name: 'Winter 2009-2010',
+            data: [
+                [Date.UTC(1970,  9,  9), 0   ],
+                [Date.UTC(1970,  9, 14), 0.15],
+                [Date.UTC(1970, 10, 28), 0.35],
+                [Date.UTC(1970, 11, 12), 0.46],
+                [Date.UTC(1971,  0,  1), 0.59],
+                [Date.UTC(1971,  0, 24), 0.58],
+                [Date.UTC(1971,  1,  1), 0.62],
+                [Date.UTC(1971,  1,  7), 0.65],
+                [Date.UTC(1971,  1, 23), 0.77],
+                [Date.UTC(1971,  2,  8), 0.77],
+                [Date.UTC(1971,  2, 14), 0.79],
+                [Date.UTC(1971,  2, 24), 0.86],
+                [Date.UTC(1971,  3,  4), 0.8 ],
+                [Date.UTC(1971,  3, 18), 0.94],
+                [Date.UTC(1971,  3, 24), 0.9 ],
+                [Date.UTC(1971,  4, 16), 0.39],
+                [Date.UTC(1971,  4, 21), 0   ]
+            ]
         }]
     });
 
@@ -60,77 +130,43 @@ $(function () {
 
 });
 
+
 /***************************************************************
 *	Plot 2: Simple Column
 ***************************************************************/
 $(function () {
     $('#plot2').highcharts({
         chart: {
-            type: 'column'
+            type: 'line'
         },
         title: {
-            text: 'Monthly Average Rainfall'
-        },
-        subtitle: {
-            text: 'Source: WorldClimate.com'
+            text: 'Monthly Average Temperature'
         },
         xAxis: {
-            categories: [
-                'Jan',
-                'Feb',
-                'Mar',
-                'Apr',
-                'May',
-                'Jun',
-                'Jul',
-                'Aug',
-                'Sep',
-                'Oct',
-                'Nov',
-                'Dec'
-            ]
+            categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
         },
         yAxis: {
-            min: 0,
             title: {
-                text: 'Rainfall (mm)'
+                text: 'Temperature (°C)'
             }
         },
-        tooltip: {
-            headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
-            pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
-                '<td style="padding:0"><b>{point.y:.1f} mm</b></td></tr>',
-            footerFormat: '</table>',
-            shared: true,
-            useHTML: true
-        },
         plotOptions: {
-            column: {
-                pointPadding: 0.2,
-                borderWidth: 0
+            line: {
+                dataLabels: {
+                    enabled: true
+                },
+                enableMouseTracking: false
             }
         },
         series: [{
             name: 'Tokyo',
-            data: [49.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4]
-
-        }, {
-            name: 'New York',
-            data: [83.6, 78.8, 98.5, 93.4, 106.0, 84.5, 105.0, 104.3, 91.2, 83.5, 106.6, 92.3]
-
+            data: [7.0, 6.9, 9.5, 14.5, 18.4, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6]
         }, {
             name: 'London',
-            data: [48.9, 38.8, 39.3, 41.4, 47.0, 48.3, 59.0, 59.6, 52.4, 65.2, 59.3, 51.2]
-
-        }, {
-            name: 'Berlin',
-            data: [42.4, 33.2, 34.5, 39.7, 52.6, 75.5, 57.4, 60.4, 47.6, 39.1, 46.8, 51.1]
-
+            data: [3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8]
         }]
     });
 
     var chart = $('#plot2').highcharts();
     chart.reflow(); // reflow that chart
-
 });
-
