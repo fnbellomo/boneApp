@@ -4,9 +4,10 @@
    General styles
    ========================================================================== */
 
-html,
-body {
-    height: 100%;
+/* fullscreen setup */
+html, body {
+    /* give this to all tags from html to .fullscreen */
+    height:100%;
 }
 
 body {
@@ -22,10 +23,11 @@ body {
 }
 
 /* Titles */
-h1, h2, h3, h4, h5, h6 {
-    font-family: "Raleway";
-    font-weight: 300;
-    color: #333;
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+    font-family: "Gotham Rounded A","Gotham Rounded B";
+    font-weight: 400;
+    font-style: normal;
+    color: #20242E;
 }
 
 h1{
@@ -36,6 +38,7 @@ h1{
 p {
     line-height: 28px;
     margin-bottom: 25px;
+    font-size: 18px;
 }
 
 .centered {
@@ -111,24 +114,30 @@ a:after {
 /* ==========================================================================
    Home
    ========================================================================== */
-#headerwrap {
-    background: url(../img/bg1.jpg) no-repeat center top;
-    padding-top:160px;
-    text-align:center;
-    background-attachment: relative;
-    background-position: center center;
-    min-height: 650px;
-    width: 100%;
-
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
+/* background setup */
+.background {
+    background-image: url(../img/bg1.jpg);
+    background-repeat:no-repeat;
+    /* custom background-position */
+    background-position:50% 50%;
+    /* ie8- graceful degradation */
+    background-position:50% 50%\9 !important;
 }
 
-#headerwrap h1 {
+.fullscreen {
+    width:100%;
+    min-height:100%;
+    text-align:center;
+}
+
+.fullscreen.not-overflow {
+    height:100%;
+    overflow:hidden;
+}
+
+#home h1 {
     color:#ffffff;
-    margin-top: 90px;
+    margin-top: 150px;
     padding-bottom: 30px;
     letter-spacing: 8px;
     font-size: 100px;
@@ -136,12 +145,21 @@ a:after {
     text-shadow: 2px 2px 2px #000;
 }
 
-#headerwrap p {
+#home h2 {
+    color: #FFF;
+    display: table-cell;
+    font-size: 60px;
+    line-height: 1.25em;
+    text-align: center;
+    vertical-align: middle;
+}
+
+#home p {
     color:#ffffff;
-    font-size: 40px;
+    font-size: 60px;
+    line-height: 1.25em;
     font-weight: 400;
     text-align: center;
-    line-height: 40px;
     letter-spacing: 3px;
     margin-left: 15px;
     text-shadow: 1px 1px 1px #000;
@@ -149,6 +167,11 @@ a:after {
 
 .whitewrap {
     background-color: #fff;
+}
+
+.bluewrap {
+    background-color: #256DAC;
+    color:#ffffff;
 }
 
 .greywrap {
@@ -171,6 +194,38 @@ a:after {
     font-size: 60px;
     line-height: 30px;
     margin-bottom: 10px;
+}
+
+/* ==========================================================================
+   our structute (about)
+   ========================================================================== */
+
+#about h1 {
+    font-size: 46px;
+    margin-top: 102px;
+}
+
+/* ==========================================================================
+   our structute (about)
+   ========================================================================== */
+
+#tools h1 {
+    font-size: 46px;
+    margin-top: 102px;
+}
+
+/* ==========================================================================
+   Team
+   ========================================================================== */
+
+#team h1 {
+    font-size: 46px;
+    margin-top: 102px;
+    color: #ffffff;
+}
+
+#team h4 {
+    color: #ffffff;
 }
 
 /* ==========================================================================
