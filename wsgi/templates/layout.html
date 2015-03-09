@@ -27,68 +27,73 @@
 
   <body>
 
-    <header class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <a class="navbar-brand hidden-xs hidden-sm" href="#home">
-	    <span class="fa fa-rocket" style="font-size:18px; color:#3498db;"></span>
-	  </a>
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="fa fa-rocket" style="font-size:30px; color:#3498db;"></span>
-          </button>
-	  <button type="button btn-default" class="navbar-toggle" data-toggle="offcanvas" data-target=".sidebar-nav">
-	    <span class="fa fa-th-list" style="font-size:30px; color:#3498db;"></span>
-	  </button>
-        </div>
+      <header class="navbar navbar-inverse navbar-fixed-top" ng-controller="NavOff"">
+	  <div class="container-fluid">
+              <div class="navbar-header">
+		  <a class="navbar-brand hidden-xs hidden-sm" href="#home">
+		      <span class="fa fa-rocket" style="font-size:18px; color:#3498db;"></span>
+		  </a>
+		  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+		      <span class="fa fa-rocket" style="font-size:30px; color:#3498db;"></span>
+		  </button>
+		  <button type="button btn-default" class="navbar-toggle" data-toggle="offcanvas" data-target=".sidebar-nav">
+		      <span class="fa fa-th-list" style="font-size:30px; color:#3498db;"></span>
+		  </button>
+		  <button type="button" class="btn btn-default btn-lg" ng-click="openAside('left')">
+		      <span class="glyphicon glyphicon-align-justify"></span> Menu
+		  </button>
+              </div>
 
-        <div class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
-            <li><a href="{{ url_for('home') }}" class="smoothScroll">Home</a></li>
-	    <li> <a href="{{ url_for('example') }}" class="smoothScroll">Example</a></li>
-	    {% if "username" in session %}
-	      <li> <a href="{{ url_for('logout') }}" class="smoothScroll">Logout</a></li>
-	    {% endif %}
-        </div><!--/.nav-collapse -->
-      </div><!--/.container -->
-    </header>
+              <div class="navbar-collapse collapse">
+		  <ul class="nav navbar-nav">
+		      <li><a href="{{ url_for('home') }}" class="smoothScroll">Home</a></li>
+		      <li> <a href="{{ url_for('example') }}" class="smoothScroll">Example</a></li>
+		      {% if "username" in session %}
+		      <li> <a href="{{ url_for('logout') }}" class="smoothScroll">Logout</a></li>
+		      {% endif %}
+              </div><!--/.nav-collapse -->
+	  </div><!--/.container -->
+      </header>
 
     <div class="container-fluid">
-      <div class="row row-offcanvas row-offcanvas-left wrapper-main">
-	
-	<!-- sidebar -->
-	<div class="col-xs-6 col-sm-2 sidebar-offcanvas" id="sidebar" role="navigation"  ng-controller="OffNavCollapseCtrl">
-	  <ul class="nav">
-            <li><a href="{{ url_for('example') }}"><i class="fa fa-home fa-fw"></i> Example home</a></li>
-	    <li>
-	      <a ng-click="isNavCollapsed = !isNavCollapsed">
-		<i class="fa fa-bar-chart-o"></i>
-		<span class="nav-label">Graphs</span>
-		<i class="fa-right fa fw" ng-class="{'fa-chevron-up': !isNavCollapsed, 'fa-chevron-down': isNavCollapsed}"></i>
-	      </a>
-	      <ul class="nav nav-second-level" collapse="isNavCollapsed">
-		<li><a href="{{ url_for('plots') }}">Plots</a></li>
-		<li><a href="{{ url_for('maps') }}">Maps</a></li>
-	      </ul>
-	    </li>
-	    <li>
-	      <a ng-click="isNavCollapsed2 = !isNavCollapsed2">
-		<i class="fa fa-google-plus-square"></i>
-		<span class="nav-label">Google</span>
-		<i class="fa-right fa fw" ng-class="{'fa-chevron-up': !isNavCollapsed2, 'fa-chevron-down': isNavCollapsed2}"></i>
-	      </a>
-	      <ul class="nav nav-second-level" collapse="isNavCollapsed2">
-		<li><a href="{{ url_for('google') }}">My Drive</a></li>
-		<li><a href="{{ url_for('google', directory_id = 'shared') }}">Shared</a></li>
+	<div class="row row-offcanvas row-offcanvas-left wrapper-main">
+	    
+	    <!-- sidebar -->
+	    <div class="col-md-2 sidebar-offcanvas" id="sidebar" ng-controller="OffNavCollapseCtrl">
+		<nav class="hidden-xs hidden-sm">
+		    <ul class="nav">
+			<li><a href="{{ url_for('example') }}"><i class="fa fa-home fa-fw"></i> Example home</a></li>
+			<li>
+			    <a ng-click="isNavCollapsed = !isNavCollapsed">
+				<i class="fa fa-bar-chart-o"></i>
+				<span class="nav-label">Graphs</span>
+				<i class="fa-right fa fw" ng-class="{'fa-chevron-up': !isNavCollapsed, 'fa-chevron-down': isNavCollapsed}"></i>
+			    </a>
+			    <ul class="nav nav-second-level" collapse="isNavCollapsed">
+				<li><a href="{{ url_for('plots') }}">Plots</a></li>
+				<li><a href="{{ url_for('maps') }}">Maps</a></li>
+			    </ul>
+			</li>
+			<li>
+			    <a ng-click="isNavCollapsed2 = !isNavCollapsed2">
+				<i class="fa fa-google-plus-square"></i>
+				<span class="nav-label">Google</span>
+				<i class="fa-right fa fw" ng-class="{'fa-chevron-up': !isNavCollapsed2, 'fa-chevron-down': isNavCollapsed2}"></i>
+			    </a>
+			    <ul class="nav nav-second-level" collapse="isNavCollapsed2">
+				<li><a href="{{ url_for('google') }}">My Drive</a></li>
+				<li><a href="{{ url_for('google', directory_id = 'shared') }}">Shared</a></li>
 
-	      </ul>
-	    </li>
-            <li><a href="{{ url_for('usersExample') }}"><i class="fa fa-users"></i> Users</a></li>
-            <li><a href="{{ url_for('analysis') }}"><i class="fa fa-cloud"></i> Analysis</a></li>
-	  </ul>
-	</div>
+			    </ul>
+			</li>
+			<li><a href="{{ url_for('usersExample') }}"><i class="fa fa-users"></i> Users</a></li>
+			<li><a href="{{ url_for('analysis') }}"><i class="fa fa-cloud"></i> Analysis</a></li>
+		    </ul>
+		</nav>
+	    </div>
 	
 	<!-- main area -->
-	<div class="col-xs-12 col-sm-10 column" ng-controller="CollapseCtrl">
+	<div class="col-md-10 column" ng-controller="CollapseCtrl">
 
 	  {% block content %}
 
@@ -120,6 +125,9 @@
     <script src="{{ url_for('static', filename='bower_components/angular/angular.min.js') }}"></script>
     <!-- Angular UI Bootstrap -->
     <script src="{{ url_for('static', filename='bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='bower_components/angular-bootstrap/ui-bootstrap.min.js') }}"></script>
+    <!-- Angular Aside -->
+    <script src="{{ url_for('static', filename='bower_components/angular-aside/dist/js/angular-aside.min.js') }}"></script>
     <!-- My Angular App -->
     <script src="{{ url_for('static', filename='js/app.js') }}"></script>
 
