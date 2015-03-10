@@ -1,18 +1,19 @@
 {
-    "name": "BoneApp",
-    "version": "0.1",
-    "authors": [
-        "Franco N. Bellomo"
-    ],
-    "description": "Bone App js dependencies",
-    "license": "MIT",
-    "dependencies": {
-    	"bootstrap": "latest",
-	"jquery": "latest",
-	"highcharts-release": "latest",
-	"highmaps-release": "latest",
-	"font-awesome": "latest",
-	"angular": "1.2.28",
-	"angular-bootstrap": "latest"
-    }
+  "name": "BoneApp",
+  "version": "0.1",
+  "authors": [
+    "Franco N. Bellomo"
+  ],
+  "description": "Bone App js dependencies",
+  "license": "MIT",
+  "dependencies": {
+    "bootstrap": "latest",
+    "jquery": "latest",
+    "highcharts-release": "latest",
+    "highmaps-release": "latest",
+    "font-awesome": "latest",
+    "angular": "1.2.28",
+    "angular-bootstrap": "latest",
+    "angular-aside": "~1.1.2"
+  }
 }

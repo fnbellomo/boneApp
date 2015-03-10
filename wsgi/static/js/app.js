@@ -1,5 +1,5 @@
 (function(){
-    var app = angular.module('analisis', ['ui.bootstrap']);
+    var app = angular.module('analisis', ['ui.bootstrap', 'ngAside']);
 
     /* con esto, cambio la sintaxis en html de angujar.js de `{{ }}` a `{[ ]}`
        para no tener conflico con jinja2 */
@@ -22,6 +22,16 @@
 	$scope.isNavCollapsed3 = true;
 	$scope.isNavCollapsed4 = true;
 	$scope.isNavCollapsed5 = true;
+    });
+
+    app.controller('NavOff', function($scope, $aside) {
+	var asideInstance = $scope.openAside = function openAside(position) {
+	    $aside.open({
+		placement: position,
+		templateUrl: '/aside',
+		size: 'lg'
+	    });
+	};
     });
 
 })();
