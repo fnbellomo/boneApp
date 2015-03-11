@@ -1,10 +1,20 @@
-# Bone App
+# [Bone App](bone.pewen.tk)
 
-All examples of the following installations are for Debian.
+## Table of contents
 
-##Install Python dependence
+- [Installation and configuration](#installation and configuration)
+- [Hosting](#hosting)
+- [Team](#team)
+- [License](#license)
 
-1. Create a virtualenvironment called `boneEnv`. I use [conda](https://store.continuum.io/cshop/anaconda/) for this. If you never work with virtualenvirionmet, reed [this](http://conda.pydata.org/docs/faq.html#environments) can help you.
+##Installation and configuration
+
+###Python dependence
+
+If you going to run in your PC, I recomend use a virtual enviroment. I use [conda](https://store.continuum.io/cshop/anaconda/) for this. If you never work with virtual envirionmet, read [this](http://conda.pydata.org/docs/faq.html#environments) can help you. In this example, the virtual enviroment is called `boneEnv`.
+Else, go directly to step 2.
+
+1. Create a virtual environment 
 
         $ conda create -n boneEnv python=2.7 pip
 		# To activate this environment, use:
@@ -16,25 +26,7 @@ All examples of the following installations are for Debian.
 		# To deactivate this environment, use:
         (boneEnv) $ source deactivate
 
-##Install Bower and the JS libraries
-
-1. First, we need install [Node.JS](https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager). Like sudo, we do:
-
-        # apt-get install curl
-        # curl -sL https://deb.nodesource.com/setup | bash -
-        # apt-get install -y nodejs
-
-2. Now, install [Bower](http://bower.io/):
-
-        $ sudo npm install -g bower
-
-3. And finaly, install all the JS and CSS that we need:
-
-		$ cd boneApp/wsgi/static
-		$ bower install bower.json
-
-
-##HowTo enable the Drive API
+###HowTo enable the Drive API
 
 1. Go to the [Google Developers Console](https://console.developers.google.com/).
 2. Select a project, or create a new one.
@@ -56,16 +48,26 @@ Now, in your pc do:
 
 The latter is done by Google's security policies.
 
-
-##Run
+###Run
 
 - `cd boneApp`
 - `python runServer.py` 
     * Running on http://0.0.0.0:8000/ (Press CTRL+C to quit)
     * Restarting with stat
 
+##Hosting
 
-##BoneApp Team
+I recomend host the application in [OpenShift](https://www.openshift.com/), because we can, free, host own application in the public cloud. It also gives us the complet control over a VM with Redhats. The `/boneApp/wsgi/application` is for run automatically in OpenShift.
+
+###Start Up
+
+1. [Creater](https://www.openshift.com/app/account/new) a account.
+2. Creater a new application and select **python2.7**
+3. In `Source Code`put `https://github.com/fnbellomo/boneApp`
+4. And it's ready!!
+
+
+##Team
 
 ###Core Team
 * [@fnbellomo](http://twitter.com/fnbellomo)
@@ -75,6 +77,6 @@ The latter is done by Google's security policies.
 ###Thanks to:
 * [@Lisax525](http://twitter.com/Lisax525) for helping in the colors of the application
 
-##Licence
+##License
 
 All the code is licensed under the MIT License, and this work is licensed under a Creative Commons Attribution 4.0 International License.
